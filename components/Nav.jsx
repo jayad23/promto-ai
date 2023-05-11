@@ -17,12 +17,6 @@ const Nav = () => {
     setproviders();
   }, [])
 
-  useEffect(() => {
-    if (session) {
-      sessionStorage.setItem("userId", JSON.stringify(session?.user.id));
-    };
-  }, [session])
-
   return (
     <nav className='flex-between w-full mb-12 pt-3'>
       <Link href="/" className='flex gap-2 flex-center'>

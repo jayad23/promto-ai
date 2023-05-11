@@ -8,8 +8,7 @@ import Profile from '@components/Profile'
 
 const ProfileComponent = () => {
   const { data: session } = useSession();
-  const savedUserId = JSON.parse(sessionStorage.getItem("userId"));
-  const [posts, setPosts] = useFetch(`/api/users/${session?.user.id ? session?.user.id : savedUserId}/posts`);
+  const [posts, setPosts] = useFetch(session?.user.id && `/api/users/${session?.user.id}/posts`);
   const router = useRouter();
 
   const handleEdit = (post) => {
