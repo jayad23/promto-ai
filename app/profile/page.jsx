@@ -35,8 +35,8 @@ const ProfileComponent = () => {
 
   return (
     <Profile
-      name="Kike Vanegas"
-      description="This is a description"
+      name={session?.user.name.replaceAll("_", " ")}
+      description="Here's a brief collection of the most recent prompts you have submitted."
       data={posts}
       handleEdit={handleEdit}
       handleDelete={handleDelete}

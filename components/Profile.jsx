@@ -6,7 +6,7 @@ const Profile = ({ name, description, data, handleEdit, handleDelete }) => {
     <section className='w-full'>
       <h1 className='head_text text-left'>
         Welcome, {" "}
-        <span className='blue_gradient'>{name}</span>
+        <span className='blue_gradient capitalize'>{name}</span>
       </h1>
       <p className='desc text-left'>{description}</p>
       <div className='mt-10 prompt_layout'>
