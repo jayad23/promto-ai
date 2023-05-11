@@ -41,7 +41,7 @@ const PromptCard = ({ prompt, handleTagClick, handleEdit, handleDelete, showEdit
         </div>
         <div className="coppy_btn" onClick={handleCopy}>
           <Image
-            src={copied === prompt.prompt ? "/assets/icons/tick.svg" : "assets/icons/copy.svg"}
+            src={copied === prompt.prompt ? "/assets/icons/tick.svg" : "/assets/icons/copy.svg"}
             width={12}
             height={12}
             alt="action icon"

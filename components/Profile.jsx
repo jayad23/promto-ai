@@ -1,7 +1,7 @@
 import React from 'react'
 import PromptCard from './PromptCard'
 
-const Profile = ({ name, description, data, handleEdit, handleDelete }) => {
+const Profile = ({ name, description, data, handleEdit, handleDelete, showEditButtons }) => {
   return (
     <section className='w-full'>
       <h1 className='head_text text-left'>
@@ -17,7 +17,7 @@ const Profile = ({ name, description, data, handleEdit, handleDelete }) => {
             handleTagClick={(tag) => alert(tag)}
             handleDelete={() => handleDelete(prompt)}
             handleEdit={() => handleEdit(prompt)}
-            showEditButtons
+            showEditButtons={showEditButtons}
           />
         ))}
       </div>
