@@ -1,30 +1,43 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSession } from 'next-auth/react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import Form from '@components/Form'
 
-const CreatePrompt = () => {
+const EditPrompt = () => {
   const [submitting, setSubmitting] = useState(false);
   const [post, setPost] = useState({ prompt: "", tag: "" });
   const router = useRouter();
   const { data: session } = useSession();
+  const searchParams = useSearchParams();
+  const promptId = searchParams.get("id");
+  const url = `/api/prompt/${promptId}`;
+
+  useEffect(() => {
+    if (promptId) {
+      const getPostById = async () => {
+        const request = await fetch(url);
+        const results = await request.json();
+        setPost({ prompt: results.prompt, tag: results.tag });
+      }
+      getPostById();
+    }
+  }, [promptId])
 
   const handleSubmitting = async (e) => {
     e.preventDefault();
     setSubmitting(true);
     try {
-      const response = await fetch("/api/prompt/new", {
-        method: "POST",
+      const response = await fetch(url, {
+        method: "PATCH",
         body: JSON.stringify({
           prompt: post.prompt,
-          userId: session?.user.id,
           tag: post.tag
         })
       })
 
       if (response.ok) {
-        router.push("/");
+        router.push("/profile");
       }
     } catch (error) {
       console.log(error);
@@ -36,14 +49,14 @@ const CreatePrompt = () => {
 
   return (
     <Form
-      type="Create"
+      type="Edit"
       post={post}
       setPost={setPost}
       submitting={submitting}
       handleSubmit={handleSubmitting}
-      btnText="Create"
+      btnText="Save"
     />
   )
 }
 
-export default CreatePrompt;
+export default EditPrompt;

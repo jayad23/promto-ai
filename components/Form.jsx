@@ -7,7 +7,7 @@ const Form = ({
   post,
   setPost,
   submitting,
-  handleSubmit }) => {
+  handleSubmit, btnText }) => {
   return (
     <section className='w-full max-w-full flex-start flex-col'>
       <h1 className='head_text text_left'><span className='blue_gradient'>{type}</span> Post</h1>
@@ -44,7 +44,7 @@ const Form = ({
         <div className='flex-end mx-3 mb-5 gap-4'>
           <Link href="/" className='text-gray-500 text-sm hover:font-bold transition-all'>Cancel</Link>
           <button type="submit" disabled={submitting} className='px-5 py-1.5 text-sm bg-btn-submit rounded text-white hover:bg-btn-submit-hovered transition-all'>
-            {submitting ? "Submitting..." : type}
+            {submitting ? "Submitting..." : btnText}
           </button>
         </div>
       </form>

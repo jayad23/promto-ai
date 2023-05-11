@@ -14,5 +14,5 @@ export const useFetch = (url) => {
     fetchPrompts();
   }, [url]);
 
-  return [data];
+  return [data, setData];
 };
